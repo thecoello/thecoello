@@ -1,0 +1,520 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap");
+* {
+  font-family: "Nunito", sans-serif;
+  color: black;
+  scroll-behavior: smooth;
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
+  -webkit-margin-start: 0;
+          margin-inline-start: 0;
+  -webkit-margin-end: 0;
+          margin-inline-end: 0;
+  -webkit-padding-start: 0px;
+          padding-inline-start: 0px;
+}
+
+p, a, .navigation-list .navigation-item a, footer .navigation-list .navigation-item a {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+a, .navigation-list .navigation-item a {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 95px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 85px;
+}
+
+h3 {
+  font-size: 65px;
+}
+
+h4 {
+  font-size: 45px;
+}
+
+h5 {
+  font-size: 35px;
+}
+
+h6 {
+  font-size: 30px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 100%;
+      grid-template-columns: 100%;
+  -ms-grid-rows: 60px auto 60px;
+      grid-template-rows: 60px auto 60px;
+      grid-template-areas: "hd hd" "section section" "footer footer";
+}
+
+body {
+  background-color: #fffbe0;
+}
+
+.cursor {
+  position: absolute;
+  border: 1px #f9ed0f solid;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  z-index: 11;
+  -webkit-transition: 0.2s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity, 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) -webkit-transform;
+  transition: 0.2s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity, 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) -webkit-transform;
+  transition: 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform, 0.2s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity;
+  transition: 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform, 0.2s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity, 0.5s cubic-bezier(0.75, -1.27, 0.3, 2.33) -webkit-transform;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+}
+
+.cursor::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 100%;
+  opacity: 0;
+}
+
+.cursor.active {
+  opacity: 1;
+  -webkit-transform: scale(12);
+          transform: scale(12);
+}
+
+.cursor.active::before {
+  opacity: 1;
+}
+
+.cursor-follower {
+  position: absolute;
+  background: #000000;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  z-index: 10;
+  -webkit-transition: 0.4s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity, 0.6s cubic-bezier(0.75, -1.27, 0.3, 2.33) -webkit-transform;
+  transition: 0.4s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity, 0.6s cubic-bezier(0.75, -1.27, 0.3, 2.33) -webkit-transform;
+  transition: 0.6s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform, 0.4s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity;
+  transition: 0.6s cubic-bezier(0.75, -1.27, 0.3, 2.33) transform, 0.4s cubic-bezier(0.75, -1.27, 0.3, 2.33) opacity, 0.6s cubic-bezier(0.75, -1.27, 0.3, 2.33) -webkit-transform;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+  -webkit-transform: translate(4px, 4px);
+          transform: translate(4px, 4px);
+}
+
+.cursor-follower.active {
+  opacity: 0.3;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: hd;
+}
+
+header .header-container {
+  position: fixed;
+  width: 100%;
+  height: 60px;
+  z-index: 10;
+}
+
+header .header-container .navigation-list {
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+}
+
+header .header-container .navigation-list a {
+  position: relative;
+  z-index: 12;
+}
+
+.menubtn, .menuclose {
+  position: relative;
+  display: none;
+  float: right;
+  right: 50px;
+  top: 35px;
+}
+
+.menubtn img, .menuclose img {
+  position: relative;
+  width: 25px;
+}
+
+.menuclose {
+  top: -50px;
+}
+
+.logo1, .logo2 {
+  position: absolute;
+  z-index: 1;
+  left: 10%;
+  top: 15%;
+}
+
+.logo1 img, .logo2 img {
+  position: relative;
+  height: 70px;
+}
+
+.logo2 {
+  display: none;
+  top: -20%;
+}
+
+.logo2 img {
+  height: 30px;
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
+.navigation-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  list-style: none;
+  width: 100%;
+  height: auto;
+}
+
+.navigation-list .navigation-item {
+  margin: 0px 10px;
+}
+
+section {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: section;
+  position: relative;
+  top: -60px;
+}
+
+.section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.section .sectionchild {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0;
+}
+
+.section .section-text {
+  text-align: right;
+}
+
+.section .section-text h1, .section .section-text h2, .section .section-text h3, .section .section-text h4, .section .section-text h5, .section .section-text h6 {
+  position: relative;
+}
+
+.section .section-text h6 {
+  position: relative;
+}
+
+.section .section-text #linearrow {
+  position: relative;
+}
+
+#linearrow img {
+  width: 50%;
+}
+
+#intro {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#about #image-me {
+  position: relative;
+}
+
+#about #image-me img {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+}
+
+#portfolio .portfolio-link {
+  text-align: center;
+}
+
+#portfolio .portfolio-link a {
+  position: relative;
+}
+
+#portfolio .portfolio-link a img {
+  width: 50%;
+}
+
+#portfolio .portfolio-link a h3 {
+  position: relative;
+  text-align: center;
+}
+
+#contactform {
+  position: relative;
+}
+
+#contactform form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 100px;
+}
+
+#contactform form input, #contactform form textarea {
+  border: 6px solid black;
+  width: 100%;
+  -webkit-box-shadow: -6px 9px #f9ed4e;
+          box-shadow: -6px 9px #f9ed4e;
+}
+
+#contactform label p, #contactform label a {
+  padding: 5px 0px;
+  position: relative;
+  top: 15px;
+}
+
+#contactform #btn {
+  margin: 20px 0px;
+  width: 100px;
+}
+
+.background {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.background .obj1, .background .obj2, .background .obj3, .background .obj4 {
+  position: relative;
+  top: 20%;
+  left: 10%;
+}
+
+.background .obj1 img, .background .obj2 img, .background .obj3 img, .background .obj4 img {
+  width: 10%;
+}
+
+.background .obj2 {
+  top: 20%;
+  left: 70%;
+}
+
+.background .obj3 {
+  top: 0%;
+  left: 25%;
+}
+
+.background .obj4 {
+  top: -70%;
+  left: 80%;
+}
+
+footer {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-area: footer;
+}
+
+footer {
+  background-color: black;
+}
+
+footer .navigation-list {
+  height: 60px;
+}
+
+footer .navigation-list .navigation-item #line {
+  border-left: 1px solid white;
+  height: 10px;
+}
+
+footer .navigation-list .navigation-item p, footer .navigation-list .navigation-item a {
+  color: white;
+}
+
+@media (max-width: 900px) {
+  a, .navigation-list .navigation-item a {
+    font-size: 14px;
+  }
+  p, a, .navigation-list .navigation-item a, footer .navigation-list .navigation-item a {
+    font-size: 14px;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-size: 50px;
+  }
+  h2 {
+    font-size: 45px;
+  }
+  h3 {
+    font-size: 35px;
+  }
+  h4 {
+    font-size: 25px;
+  }
+  h5 {
+    font-size: 20px;
+  }
+  h6 {
+    font-size: 15px;
+  }
+  .menubtn, .menuclose {
+    display: inherit;
+  }
+  .menuclose {
+    display: none;
+    -webkit-filter: invert(1);
+            filter: invert(1);
+    z-index: 11;
+  }
+  .cursor {
+    display: none;
+  }
+  .cursor-follower {
+    display: none;
+  }
+  .header-container .logo1 img, .header-container .logo2 img {
+    top: 10px;
+    height: 50px;
+  }
+  .header-container .navigation-list {
+    display: none;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 100vh;
+    bottom: 0% !important;
+    top: 0% !important;
+  }
+  .header-container .navigation-list .navigation-item {
+    margin: 5px 0px;
+  }
+  .header-container .navigation-list .navigation-item a {
+    color: white;
+    font-size: 40px;
+  }
+  .section {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .section .sectionchild {
+    margin: 25px 0px;
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
+  }
+  .section .section-text {
+    text-align: center;
+  }
+  #contactform form {
+    display: block;
+  }
+  .background {
+    display: none;
+  }
+  footer {
+    height: 250px;
+    top: -50px;
+  }
+  footer .navigation-list {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: 150px;
+    padding: 50px 0%;
+  }
+  footer .navigation-list .navigation-item {
+    margin: 3px 0px;
+  }
+  footer .navigation-list .navigation-item #line {
+    border-bottom: 1px solid white;
+    width: 100px;
+    margin: 3px 0px;
+  }
+}
+/*# sourceMappingURL=style.css.map */
